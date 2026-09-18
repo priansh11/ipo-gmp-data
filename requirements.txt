@@ -1,0 +1,8 @@
+# For --write mode (scrape + output JSON) you only need:
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=4.9
+
+# For --serve mode (running the live HTTP API) also install:
+fastapi>=0.110
+uvicorn>=0.27
