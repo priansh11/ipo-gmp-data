@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPO Grey Market Premium</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-2: #1e222b;
+    --border: #2a2f3a;
+    --text: #e6e8ec;
+    --muted: #9aa4b2;
+    --up: #23c45e;
+    --down: #f43f5e;
+    --accent: #3b82f6;
+    --amber: #f59e0b;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f6f8; --panel: #ffffff; --panel-2: #f0f2f5; --border: #e2e5ea;
+      --text: #1a1d23; --muted: #6b7280;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px; line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 60px; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+  h1 { font-size: 22px; margin: 0; font-weight: 700; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .toolbar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin: 18px 0; padding: 12px; background: var(--panel);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .toolbar input, .toolbar select, .toolbar button {
+    background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px; font-size: 13px; outline: none;
+  }
+  .toolbar input { flex: 1; min-width: 160px; }
+  .toolbar button { cursor: pointer; font-weight: 600; }
+  .toolbar button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .toolbar button:hover { filter: brightness(1.1); }
+  .spacer { flex: 1; }
+  .meta { color: var(--muted); font-size: 12px; }
+  .table-wrap {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; min-width: 820px; }
+  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  th {
+    position: sticky; top: 0; background: var(--panel-2); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+    cursor: pointer; user-select: none;
+  }
+  th.sorted::after { content: attr(data-arrow); margin-left: 6px; color: var(--accent); }
+  tbody tr:hover { background: var(--panel-2); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .name { font-weight: 600; }
+  .name a { color: inherit; text-decoration: none; }
+  .name a:hover { text-decoration: underline; }
+  .up { color: var(--up); font-weight: 600; }
+  .down { color: var(--down); font-weight: 600; }
+  .badge {
+    display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 11px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .badge.OPEN { background: rgba(35,196,94,0.15); color: var(--up); }
+  .badge.CLOSED { background: rgba(244,63,94,0.15); color: var(--down); }
+  .badge.UPCOMING { background: rgba(59,130,246,0.15); color: var(--accent); }
+  .badge.UNKNOWN { background: rgba(154,164,178,0.15); color: var(--muted); }
+  .cat { font-size: 11px; color: var(--muted); }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+  .error {
+    margin: 12px 0; padding: 12px 14px; border-radius: 8px;
+    background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3);
+    font-size: 13px;
+  }
+  footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>IPO Grey Market Premium</h1>
+    <span class="sub" id="subtitle">Loading…</span>
+  </header>
+
+  <div id="errorBox"></div>
+
+  <div class="toolbar">
+    <input id="search" type="text" placeholder="Search IPO name…" />
+    <select id="statusFilter">
+      <option value="">All statuses</option>
+      <option value="OPEN">Open</option>
+      <option value="CLOSED">Closed</option>
+      <option value="UPCOMING">Upcoming</option>
+    </select>
+    <select id="catFilter">
+      <option value="">All</option>
+      <option value="MAINBOARD">Mainboard</option>
+      <option value="SME">SME</option>
+    </select>
+    <span class="spacer"></span>
+    <button id="refreshBtn">Refresh</button>
+    <button id="csvBtn" class="primary">Download CSV</button>
+  </div>
+
+  <div class="table-wrap">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th data-key="ipoName">IPO Name</th>
+          <th data-key="gmp" class="num">GMP</th>
+          <th data-key="issuePrice" class="num">Issue Price</th>
+          <th data-key="expectedPrice" class="num">Expected Price</th>
+          <th data-key="expectedGainPct" class="num">Est. Gain %</th>
+          <th data-key="status">Status</th>
+          <th data-key="ipoDate">Date</th>
+          <th data-key="lastUpdated">Updated</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    Data source: <a id="sourceLink" href="#" target="_blank" rel="noopener">ipowatch.in</a>
+    &nbsp;·&nbsp; This page reads a static JSON snapshot; values are indicative and not investment advice.
+  </footer>
+</div>
+
+<script>
+  // ------------------------------------------------------------------
+  // CONFIG: point this at your JSON. For GitHub, use the RAW url:
+  //   https://raw.githubusercontent.com/<user>/<repo>/<branch>/ipo_gmp.json
+  // If this HTML sits in the SAME repo as the JSON (GitHub Pages), the
+  // relative path below works with zero CORS issues.
+  // ------------------------------------------------------------------
+  const DATA_URL = "ipo_gmp.json";
+
+  let rows = [];
+  let sortKey = "gmp";
+  let sortDir = -1; // -1 desc, 1 asc
+
+  const fmt = (v, dec = 2) =>
+    (v === null || v === undefined || v === "") ? "—" : Number(v).toFixed(dec);
+
+  function signed(v, dec = 2, suffix = "") {
+    if (v === null || v === undefined || v === "") return { text: "—", cls: "" };
+    const n = Number(v);
+    const sign = n > 0 ? "+" : "";
+    return { text: sign + n.toFixed(dec) + suffix, cls: n > 0 ? "up" : n < 0 ? "down" : "" };
+  }
+
+  function statusBadge(s) {
+    const cls = ["OPEN", "CLOSED", "UPCOMING"].includes(s) ? s : "UNKNOWN";
+    return `<span class="badge ${cls}">${s || "—"}</span>`;
+  }
+
+  function applyFilters() {
+    const q = document.getElementById("search").value.trim().toLowerCase();
+    const st = document.getElementById("statusFilter").value;
+    const cat = document.getElementById("catFilter").value;
+
+    let out = rows.filter(r => {
+      if (q && !(r.ipoName || "").toLowerCase().includes(q)) return false;
+      if (st && r.status !== st) return false;
+      if (cat && r.category !== cat) return false;
+      return true;
+    });
+
+    out.sort((a, b) => {
+      let av = a[sortKey], bv = b[sortKey];
+      if (typeof av === "string" || typeof bv === "string") {
+        av = (av || "").toString().toLowerCase();
+        bv = (bv || "").toString().toLowerCase();
+        return av < bv ? -sortDir : av > bv ? sortDir : 0;
+      }
+      av = av ?? -Infinity; bv = bv ?? -Infinity;
+      return (av - bv) * sortDir;
+    });
+    return out;
+  }
+
+  function render() {
+    const data = applyFilters();
+    const tbody = document.getElementById("tbody");
+
+    if (!data.length) {
+      tbody.innerHTML = `<tr><td colspan="8" class="empty">No IPOs match.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = data.map(r => {
+      const gmp = signed(r.gmp);
+      const gain = signed(r.expectedGainPct, 2, "%");
+      const nameCell = r.url && r.url !== "#"
+        ? `<a href="${r.url}" target="_blank" rel="noopener">${r.ipoName}</a>`
+        : (r.ipoName || "—");
+      return `
+        <tr>
+          <td class="name">${nameCell}<div class="cat">${r.category || ""}</div></td>
+          <td class="num ${gmp.cls}">${gmp.text}</td>
+          <td class="num">${fmt(r.issuePrice)}</td>
+          <td class="num">${fmt(r.expectedPrice)}</td>
+          <td class="num ${gain.cls}">${gain.text}</td>
+          <td>${statusBadge(r.status)}</td>
+          <td>${r.ipoDate || "—"}</td>
+          <td>${r.lastUpdated || "—"}</td>
+        </tr>`;
+    }).join("");
+
+    // header sort arrows
+    document.querySelectorAll("th").forEach(th => {
+      th.classList.remove("sorted");
+      th.removeAttribute("data-arrow");
+      if (th.dataset.key === sortKey) {
+        th.classList.add("sorted");
+        th.setAttribute("data-arrow", sortDir === -1 ? "▼" : "▲");
+      }
+    });
+  }
+
+  function toCSV() {
+    const data = applyFilters();
+    const cols = ["ipoName", "category", "gmp", "issuePrice", "expectedPrice",
+                  "expectedGainPct", "status", "ipoDate", "lastUpdated", "url"];
+    const esc = v => {
+      if (v === null || v === undefined) return "";
+      const s = String(v);
+      return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    };
+    const lines = [cols.join(",")];
+    data.forEach(r => lines.push(cols.map(c => esc(r[c])).join(",")));
+    return lines.join("\n");
+  }
+
+  function downloadCSV() {
+    const blob = new Blob([toCSV()], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const today = new Date().toISOString().split("T")[0];
+    a.href = url;
+    a.download = `ipo_gmp_${today}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function load() {
+    document.getElementById("subtitle").textContent = "Loading…";
+    document.getElementById("errorBox").innerHTML = "";
+
+    fetch(DATA_URL, { cache: "no-store" })
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(payload => {
+        rows = Array.isArray(payload) ? payload : (payload.rows || []);
+        const fetchedAt = payload.fetchedAt ? new Date(payload.fetchedAt) : null;
+
+        document.getElementById("subtitle").textContent =
+          `${rows.length} IPOs` +
+          (fetchedAt ? ` · updated ${fetchedAt.toLocaleString()}` : "");
+
+        if (payload.source) {
+          const link = document.getElementById("sourceLink");
+          link.href = payload.source;
+        }
+        if (payload.error) {
+          document.getElementById("errorBox").innerHTML =
+            `<div class="error">Scraper note: ${payload.error}</div>`;
+        }
+        render();
+      })
+      .catch(err => {
+        document.getElementById("subtitle").textContent = "Failed to load";
+        document.getElementById("errorBox").innerHTML =
+          `<div class="error">Could not load data from <code>${DATA_URL}</code>: ${err.message}.
+           If this is a CORS error, make sure you're using a raw JSON URL
+           (raw.githubusercontent.com, not github.com/.../blob) or host this page
+           in the same place as the JSON.</div>`;
+      });
+  }
+
+  // events
+  document.getElementById("search").addEventListener("input", render);
+  document.getElementById("statusFilter").addEventListener("change", render);
+  document.getElementById("catFilter").addEventListener("change", render);
+  document.getElementById("refreshBtn").addEventListener("click", load);
+  document.getElementById("csvBtn").addEventListener("click", downloadCSV);
+  document.querySelectorAll("th").forEach(th => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.key;
+      if (sortKey === key) sortDir = -sortDir;
+      else { sortKey = key; sortDir = -1; }
+      render();
+    });
+  });
+
+  load();
+</script>
+</body>
+</html>
