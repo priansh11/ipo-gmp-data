@@ -11,91 +11,105 @@
       "expectedGainPct": 14.81,
       "ipoDate": "24-28 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/a-one-steels-ipo/"
     },
     {
       "ipoName": "Adroit Industries",
       "normalizedName": "ADROITINDUSTRIES",
       "category": "MAINBOARD",
-      "gmp": 37.0,
+      "gmp": 32.0,
       "trend": "UP",
       "issuePrice": 134.0,
-      "expectedPrice": 171.0,
-      "expectedGainPct": 27.61,
+      "expectedPrice": 166.0,
+      "expectedGainPct": 23.88,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/adroit-industries-ipo/"
+    },
+    {
+      "ipoName": "Swastika Infra",
+      "normalizedName": "SWASTIKAINFRA",
+      "category": "MAINBOARD",
+      "gmp": 3.0,
+      "trend": "UP",
+      "issuePrice": 185.0,
+      "expectedPrice": 188.0,
+      "expectedGainPct": 1.62,
+      "ipoDate": "23-25 Sept",
+      "status": "UPCOMING",
+      "lastUpdated": "21 Sept, 07:20",
+      "url": "https://ipowatch.in/swastika-infra-ipo/"
     },
     {
       "ipoName": "Elevate Campuses",
       "normalizedName": "ELEVATECAMPUSES",
       "category": "MAINBOARD",
-      "gmp": 15.0,
+      "gmp": 16.0,
       "trend": "UP",
       "issuePrice": 362.0,
-      "expectedPrice": 377.0,
-      "expectedGainPct": 4.14,
+      "expectedPrice": 378.0,
+      "expectedGainPct": 4.42,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/elevate-campuses-ipo/"
     },
     {
       "ipoName": "ArMee Infotech",
       "normalizedName": "ARMEEINFOTECH",
       "category": "MAINBOARD",
-      "gmp": 0.0,
-      "trend": "FLAT",
+      "gmp": 1.0,
+      "trend": "UP",
       "issuePrice": 375.0,
-      "expectedPrice": 375.0,
-      "expectedGainPct": 0.0,
+      "expectedPrice": 376.0,
+      "expectedGainPct": 0.27,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/armee-infotech-ipo/"
     },
     {
       "ipoName": "Varmora Granito",
       "normalizedName": "VARMORAGRANITO",
       "category": "MAINBOARD",
-      "gmp": 15.0,
-      "trend": "UP",
+      "gmp": 10.0,
+      "trend": "DOWN",
       "issuePrice": 148.0,
-      "expectedPrice": 163.0,
-      "expectedGainPct": 10.14,
+      "expectedPrice": 158.0,
+      "expectedGainPct": 6.76,
       "ipoDate": "22-24 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/varmora-granito-ipo/"
     },
     {
       "ipoName": "Sonaselection India",
       "normalizedName": "SONASELECTION",
       "category": "MAINBOARD",
-      "gmp": 2.0,
+      "gmp": 0.0,
       "trend": "DOWN",
       "issuePrice": 99.0,
-      "expectedPrice": 101.0,
-      "expectedGainPct": 2.02,
+      "expectedPrice": 99.0,
+      "expectedGainPct": 0.0,
       "ipoDate": "17-21 Sept",
       "status": "OPEN",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/sonaselection-india-ipo/"
     },
     {
       "ipoName": "NSE",
       "normalizedName": "NSE",
       "category": "MAINBOARD",
-      "gmp": 111.0,
+      "gmp": 48.0,
       "trend": "DOWN",
       "issuePrice": 1785.0,
-      "expectedPrice": 1896.0,
-      "expectedGainPct": 6.22,
+      "expectedPrice": 1833.0,
+      "expectedGainPct": 2.69,
       "ipoDate": "17-21 Sept",
       "status": "OPEN",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/nse-ipo/"
     },
     {
@@ -109,21 +123,21 @@
       "expectedGainPct": 0.0,
       "ipoDate": "16-18 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/hero-motors-ipo/"
     },
     {
       "ipoName": "SS Retail",
       "normalizedName": "SSRETAIL",
       "category": "MAINBOARD",
-      "gmp": 145.0,
+      "gmp": 147.0,
       "trend": "DOWN",
       "issuePrice": 424.0,
-      "expectedPrice": 569.0,
-      "expectedGainPct": 34.2,
+      "expectedPrice": 571.0,
+      "expectedGainPct": 34.67,
       "ipoDate": "16-18 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/ss-retail-ipo/"
     },
     {
@@ -137,22 +151,50 @@
       "expectedGainPct": 32.26,
       "ipoDate": "16-18 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/jindal-supreme-ipo/"
     },
     {
       "ipoName": "Manika Plastech",
       "normalizedName": "MANIKAPLASTECH",
       "category": "MAINBOARD",
-      "gmp": 2.0,
+      "gmp": 1.0,
       "trend": "DOWN",
       "issuePrice": 43.0,
-      "expectedPrice": 45.0,
-      "expectedGainPct": 4.65,
+      "expectedPrice": 44.0,
+      "expectedGainPct": 2.33,
       "ipoDate": "11-16 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/manika-plastech-ipo/"
+    },
+    {
+      "ipoName": "Bench Mark Infotech",
+      "normalizedName": "BENCHMARKINFOTECH",
+      "category": "SME",
+      "gmp": 0.0,
+      "trend": "FLAT",
+      "issuePrice": null,
+      "expectedPrice": null,
+      "expectedGainPct": 0.0,
+      "ipoDate": "23-25 Sept",
+      "status": "UPCOMING",
+      "lastUpdated": "21 Sept, 07:20",
+      "url": "https://ipowatch.in/bench-mark-infotech-services-ipo/"
+    },
+    {
+      "ipoName": "Coreintegra Consulting",
+      "normalizedName": "COREINTEGRACONSULTING",
+      "category": "SME",
+      "gmp": 0.0,
+      "trend": "FLAT",
+      "issuePrice": 78.0,
+      "expectedPrice": 78.0,
+      "expectedGainPct": 0.0,
+      "ipoDate": "23-25 Sept",
+      "status": "UPCOMING",
+      "lastUpdated": "21 Sept, 07:20",
+      "url": "https://ipowatch.in/coreintegra-consulting-ipo/"
     },
     {
       "ipoName": "Unitec Fibres",
@@ -165,7 +207,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/unitec-fibres-ipo/"
     },
     {
@@ -179,7 +221,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/skoffset-ipo/"
     },
     {
@@ -188,12 +230,12 @@
       "category": "SME",
       "gmp": 0.0,
       "trend": "FLAT",
-      "issuePrice": null,
-      "expectedPrice": null,
+      "issuePrice": 54.0,
+      "expectedPrice": 54.0,
       "expectedGainPct": 0.0,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/liqvd-digital-ipo/"
     },
     {
@@ -207,7 +249,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in//pooja-logistics-ipo/"
     },
     {
@@ -221,7 +263,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "23-25 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/sai-urja-ipo/"
     },
     {
@@ -235,7 +277,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "22-24 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/anand-seamless-ipo/"
     },
     {
@@ -249,7 +291,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "22-24 Sept",
       "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/himalaya-nutravedics-ipo/"
     },
     {
@@ -262,8 +304,8 @@
       "expectedPrice": 37.0,
       "expectedGainPct": 0.0,
       "ipoDate": "21-23 Sept",
-      "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "status": "OPEN",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/vivekanand-cotspin-ipo/"
     },
     {
@@ -276,8 +318,8 @@
       "expectedPrice": 157.0,
       "expectedGainPct": 48.11,
       "ipoDate": "21-23 Sept",
-      "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "status": "OPEN",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/robokidz-eduventures-ipo/"
     },
     {
@@ -290,8 +332,8 @@
       "expectedPrice": 116.0,
       "expectedGainPct": 0.0,
       "ipoDate": "21-23 Sept",
-      "status": "UPCOMING",
-      "lastUpdated": "19 Sept, 07:20",
+      "status": "OPEN",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/fx-multitech-ipo/"
     },
     {
@@ -305,7 +347,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "18-22 Sept",
       "status": "OPEN",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/axiom-gas-engineering-ipo-details/"
     },
     {
@@ -319,21 +361,21 @@
       "expectedGainPct": 38.14,
       "ipoDate": "17-21 Sept",
       "status": "OPEN",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/spectraa-technology-ipo/"
     },
     {
       "ipoName": "Kheria Autocomp",
       "normalizedName": "KHERIAAUTOCOMP",
       "category": "SME",
-      "gmp": 10.0,
-      "trend": "UP",
+      "gmp": 3.0,
+      "trend": "DOWN",
       "issuePrice": 101.0,
-      "expectedPrice": 111.0,
-      "expectedGainPct": 9.9,
+      "expectedPrice": 104.0,
+      "expectedGainPct": 2.97,
       "ipoDate": "17-21 Sept",
       "status": "OPEN",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/kheria-autocomp-ipo/"
     },
     {
@@ -347,7 +389,7 @@
       "expectedGainPct": 0.88,
       "ipoDate": "15-17 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/vama-wovenfab-ipo/"
     },
     {
@@ -361,7 +403,7 @@
       "expectedGainPct": 10.17,
       "ipoDate": "15-17 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/shakti-polytarp-ipo/"
     },
     {
@@ -375,7 +417,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "15-17 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/quanto-agroworld-ipo/"
     },
     {
@@ -389,7 +431,7 @@
       "expectedGainPct": 0.0,
       "ipoDate": "11-16 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/injecto-polymers-ipo/"
     },
     {
@@ -403,12 +445,12 @@
       "expectedGainPct": 0.0,
       "ipoDate": "11-16 Sept",
       "status": "CLOSED",
-      "lastUpdated": "19 Sept, 07:20",
+      "lastUpdated": "21 Sept, 07:20",
       "url": "https://ipowatch.in/century-business-media-ipo/"
     }
   ],
-  "count": 29,
-  "fetchedAt": "2026-09-19T13:00:12.862015",
+  "count": 32,
+  "fetchedAt": "2026-09-21T09:09:01.232464",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
