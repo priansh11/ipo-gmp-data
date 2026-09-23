@@ -413,17 +413,95 @@ def merge_sources(gmp_rows: List[Dict], screener_rows: List[Dict]) -> List[Dict]
     return gmp_rows
 
 
+# --------------------------------------------------------------------------
+# ipowatch detail page - Issue Size (money raised)
+# --------------------------------------------------------------------------
+
+# Issue size is static once an IPO is announced, so cache detail pages for a
+# long time to avoid re-fetching ~30 pages every refresh.
+_DETAIL_CACHE: Dict[str, Dict] = {}          # url -> {issueSizeCr, fetchedAt}
+DETAIL_CACHE_TTL_SECONDS = 6 * 60 * 60       # 6 hours
+
+
+def parse_issue_size(text: Optional[str]) -> Optional[float]:
+    """
+    'Approx ₹405 Crores' / '₹1,933.50 Cr' / '₹52 Cr (approx)' -> 405.0 / 1933.5 / 52.0
+    Returns the value in Rupees Crore.
+    """
+    if not text:
+        return None
+    # take the part before 'cr' (crore), ignore any following notes
+    m = re.search(r"([\d,]+(?:\.\d+)?)\s*cr", text, re.IGNORECASE)
+    if not m:
+        m = re.search(r"([\d,]+(?:\.\d+)?)", text)
+    if not m:
+        return None
+    return to_number(m.group(1))
+
+
+def scrape_detail_issue_size(url: str) -> Optional[float]:
+    """
+    Fetch an ipowatch IPO detail page and pull the Issue Size (in Rs Cr).
+    Cached for DETAIL_CACHE_TTL_SECONDS.
+    """
+    if not url:
+        return None
+
+    cached = _DETAIL_CACHE.get(url)
+    if cached and (time.time() - cached["fetchedAt"]) < DETAIL_CACHE_TTL_SECONDS:
+        return cached["issueSizeCr"]
+
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "lxml")
+
+        issue_size = None
+        # The detail page has a key/value table; find the "Issue Size" row.
+        for tr in soup.find_all("tr"):
+            cells = [clean_text(td) for td in tr.find_all(["td", "th"])]
+            if len(cells) >= 2 and "issue size" in cells[0].lower():
+                issue_size = parse_issue_size(cells[1])
+                break
+
+        _DETAIL_CACHE[url] = {"issueSizeCr": issue_size, "fetchedAt": time.time()}
+        return issue_size
+    except Exception as exc:                        # noqa: BLE001
+        log.warning("Detail fetch failed for %s (%s)", url, exc)
+        # cache the miss briefly so one bad page doesn't get retried every time
+        _DETAIL_CACHE[url] = {"issueSizeCr": None, "fetchedAt": time.time()}
+        return None
+
+
+def enrich_issue_sizes(rows: List[Dict]) -> None:
+    """Fill issueSizeCr on each row from its ipowatch detail page (cached)."""
+    for row in rows:
+        url = row.get("url")
+        row["issueSizeCr"] = scrape_detail_issue_size(url) if url else None
+
+
 def scrape_all() -> List[Dict]:
-    """Scrape both sources and merge. Screener failure is non-fatal."""
+    """Scrape all sources and merge. Secondary sources fail non-fatally."""
     gmp_rows = scrape_gmp()
 
+    # Screener: listing date + market cap
     try:
         screener_rows = scrape_screener()
     except Exception as exc:                        # noqa: BLE001
-        log.warning("Screener fetch failed (%s) - continuing with GMP only", exc)
+        log.warning("Screener fetch failed (%s) - continuing without it", exc)
         screener_rows = []
+    merge_sources(gmp_rows, screener_rows)
 
-    return merge_sources(gmp_rows, screener_rows)
+    # ipowatch detail pages: issue size (cached 6h, so cheap after first load)
+    try:
+        enrich_issue_sizes(gmp_rows)
+    except Exception as exc:                        # noqa: BLE001
+        log.warning("Issue-size enrichment failed (%s) - continuing without it", exc)
+        for r in gmp_rows:
+            r.setdefault("issueSizeCr", None)
+
+    return gmp_rows
+
 
 
 # --------------------------------------------------------------------------
