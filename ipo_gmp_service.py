@@ -19,7 +19,7 @@ import logging
 import re
 import threading
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 
 import requests
@@ -38,6 +38,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("ipo_gmp")
 
 GMP_URL = "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
+SCREENER_URL = "https://www.screener.in/ipo/recent/"
 
 # Be a polite scraper: identify, and don't hammer the source.
 HEADERS = {
@@ -257,6 +258,175 @@ def scrape_gmp() -> List[Dict]:
 
 
 # --------------------------------------------------------------------------
+# screener.in - listing date, IPO market cap (issue size), IPO price
+# --------------------------------------------------------------------------
+
+def parse_listing_date(text: Optional[str]):
+    """
+    Screener shows 'today' / 'tomorrow' / 'yesterday' / '24 Sep 2026'.
+    Returns (display_text, iso_date_or_None, is_today_bool).
+    """
+    if not text:
+        return None, None, False
+
+    raw = text.strip()
+    low = raw.lower()
+    today = datetime.now().date()
+
+    if low == "today":
+        return raw, today.isoformat(), True
+    if low == "tomorrow":
+        return raw, (today + timedelta(days=1)).isoformat(), False
+    if low == "yesterday":
+        return raw, (today - timedelta(days=1)).isoformat(), False
+
+    # e.g. "24 Sep 2026"
+    for fmt in ("%d %b %Y", "%d %B %Y", "%d-%b-%Y"):
+        try:
+            d = datetime.strptime(raw, fmt).date()
+            return raw, d.isoformat(), d == today
+        except ValueError:
+            continue
+
+    return raw, None, False
+
+
+def scrape_screener() -> List[Dict]:
+    """
+    Fetch the screener.in recent-IPO table: listing date, IPO market cap
+    (issue size in Rs Cr), IPO price, current price and % change.
+    """
+    log.info("Fetching screener recent IPOs")
+    resp = requests.get(SCREENER_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+    resp.raise_for_status()
+
+    soup = BeautifulSoup(resp.text, "lxml")
+    rows: List[Dict] = []
+
+    for table in soup.find_all("table"):
+        trs = table.find_all("tr")
+        if not trs:
+            continue
+
+        headers = [clean_text(th) for th in trs[0].find_all(["th", "td"])]
+        if not headers:
+            continue
+
+        idx_name = _header_index(headers, "name")
+        idx_date = _header_index(headers, "listing date", "list date")
+        idx_mcap = _header_index(headers, "ipo mcap", "mcap")
+        idx_price = _header_index(headers, "ipo price")
+        idx_curr = _header_index(headers, "current price")
+        idx_chg = _header_index(headers, "% change", "change")
+
+        # Only the recent-IPO table has a listing date + mcap
+        if idx_name is None or idx_date is None:
+            continue
+
+        for tr in trs[1:]:
+            tds = tr.find_all("td")
+            if len(tds) < 2:
+                continue
+            cells = [clean_text(td) for td in tds]
+
+            def cell(i):
+                return cells[i] if i is not None and i < len(cells) else None
+
+            name = cell(idx_name)
+            if not name:
+                continue
+
+            date_text, date_iso, is_today = parse_listing_date(cell(idx_date))
+
+            # "⇣ 3%" / "⇡ 45%" -> -3.0 / 45.0
+            chg_raw = cell(idx_chg) or ""
+            change_pct = to_number(chg_raw)
+            if change_pct is not None and ("⇣" in chg_raw or "-" in chg_raw):
+                change_pct = -abs(change_pct)
+
+            link = None
+            a = tds[idx_name].find("a") if idx_name < len(tds) else None
+            if a and a.get("href"):
+                href = a["href"]
+                link = href if href.startswith("http") else "https://www.screener.in" + href
+
+            rows.append(
+                {
+                    "name": name,
+                    "normalizedName": normalize_name(name),
+                    "listingDate": date_text,
+                    "listingDateIso": date_iso,
+                    "listedToday": is_today,
+                    "ipoMarketCapCr": to_number(cell(idx_mcap)),   # issue size, Rs Cr
+                    "ipoPrice": to_number(cell(idx_price)),
+                    "currentPrice": to_number(cell(idx_curr)),
+                    "changePct": change_pct,
+                    "screenerUrl": link,
+                }
+            )
+
+        if rows:
+            break   # first matching table is the one we want
+
+    log.info("Parsed %d screener rows", len(rows))
+    return rows
+
+
+def merge_sources(gmp_rows: List[Dict], screener_rows: List[Dict]) -> List[Dict]:
+    """
+    Enrich GMP rows with screener data (listing date, IPO market cap).
+    Matching is by normalized company name, with a contains-fallback.
+    """
+    by_name = {r["normalizedName"]: r for r in screener_rows if r.get("normalizedName")}
+
+    for row in gmp_rows:
+        key = row.get("normalizedName") or ""
+        match = by_name.get(key)
+
+        # contains-match fallback (names differ slightly between sources)
+        if not match and key:
+            for sk, sv in by_name.items():
+                if sk and (sk in key or key in sk):
+                    match = sv
+                    break
+
+        if match:
+            row["listingDate"] = match.get("listingDate")
+            row["listingDateIso"] = match.get("listingDateIso")
+            row["listedToday"] = match.get("listedToday", False)
+            row["ipoMarketCapCr"] = match.get("ipoMarketCapCr")
+            row["currentPrice"] = match.get("currentPrice")
+            row["changePct"] = match.get("changePct")
+            row["screenerUrl"] = match.get("screenerUrl")
+            # prefer screener's IPO price when ipowatch didn't have one
+            if row.get("issuePrice") is None:
+                row["issuePrice"] = match.get("ipoPrice")
+        else:
+            row.setdefault("listingDate", None)
+            row.setdefault("listingDateIso", None)
+            row.setdefault("listedToday", False)
+            row.setdefault("ipoMarketCapCr", None)
+            row.setdefault("currentPrice", None)
+            row.setdefault("changePct", None)
+            row.setdefault("screenerUrl", None)
+
+    return gmp_rows
+
+
+def scrape_all() -> List[Dict]:
+    """Scrape both sources and merge. Screener failure is non-fatal."""
+    gmp_rows = scrape_gmp()
+
+    try:
+        screener_rows = scrape_screener()
+    except Exception as exc:                        # noqa: BLE001
+        log.warning("Screener fetch failed (%s) - continuing with GMP only", exc)
+        screener_rows = []
+
+    return merge_sources(gmp_rows, screener_rows)
+
+
+# --------------------------------------------------------------------------
 # cache
 # --------------------------------------------------------------------------
 
@@ -285,7 +455,7 @@ def get_rows(force: bool = False) -> List[Dict]:
             return _cache.rows
 
         try:
-            rows = scrape_gmp()
+            rows = scrape_all()
             if rows:
                 _cache.rows = rows
                 _cache.fetched_at = time.time()
@@ -308,6 +478,7 @@ def get_rows(force: bool = False) -> List[Dict]:
 def gmp(
     status: Optional[str] = None,
     category: Optional[str] = None,
+    listed_today: bool = False,
     force: bool = False,
 ):
     rows = get_rows(force=force)
@@ -318,6 +489,8 @@ def gmp(
     if category:
         want_cat = category.strip().upper()
         rows = [r for r in rows if r["category"] == want_cat]
+    if listed_today:
+        rows = [r for r in rows if r.get("listedToday")]
 
     return {
         "rows": rows,
@@ -353,9 +526,11 @@ if _HAS_FASTAPI:
     def _gmp_route(
         status: Optional[str] = Query(None, description="OPEN | CLOSED | UPCOMING"),
         category: Optional[str] = Query(None, description="MAINBOARD | SME"),
+        listed_today: bool = Query(False, description="Only IPOs listing today"),
         force: bool = Query(False, description="Bypass the cache"),
     ):
-        return gmp(status=status, category=category, force=force)
+        return gmp(status=status, category=category,
+                   listed_today=listed_today, force=force)
 
     @app.get("/api/ipo/gmp/health")
     def _health_route():

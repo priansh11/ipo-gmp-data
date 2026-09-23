@@ -1,0 +1,61 @@
+name: Refresh IPO GMP data
+
+# Runs on GitHub's servers (your machine can be off).
+# Scrapes ipowatch + screener, writes ipo_gmp.json, commits it if it changed.
+
+on:
+  # Scheduled runs. GitHub cron is in UTC; IST = UTC + 5:30.
+  # Weekday mornings, centred on 9:00 AM IST, with a few runs so the
+  # data is fresh around the ~10 AM IST listing window.
+  schedule:
+    - cron: "30 3 * * 1-5"   # 09:00 IST  Mon-Fri
+    - cron: "00 4 * * 1-5"   # 09:30 IST
+    - cron: "30 4 * * 1-5"   # 10:00 IST
+    - cron: "00 5 * * 1-5"   # 10:30 IST
+
+  # Lets you trigger it by hand from the Actions tab (useful for testing).
+  workflow_dispatch:
+
+# Allow the job to push commits back to the repo.
+permissions:
+  contents: write
+
+# If a run is already going, don't stack another on top of it.
+concurrency:
+  group: refresh-gmp
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Scrape and write JSON
+        run: python ipo_gmp_service.py --write ipo_gmp.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "gmp-bot"
+          git config user.email "gmp-bot@users.noreply.github.com"
+
+          # Only commit when the data actually changed
+          if git diff --quiet -- ipo_gmp.json; then
+            echo "No change in GMP data - nothing to commit."
+            exit 0
+          fi
+
+          git add ipo_gmp.json
+          git commit -m "gmp: auto-update $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
