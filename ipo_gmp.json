@@ -325,8 +325,8 @@
       "listingDateIso": "2026-09-24",
       "listedToday": true,
       "ipoMarketCapCr": 441788.0,
-      "currentPrice": 1830.75,
-      "changePct": 2.0,
+      "currentPrice": 1824.7,
+      "changePct": 1.0,
       "screenerUrl": "https://www.screener.in/company/544937/consolidated/",
       "issueSizeCr": 22561.57
     },
@@ -457,8 +457,8 @@
       "listingDateIso": "2026-09-24",
       "listedToday": true,
       "ipoMarketCapCr": 441788.0,
-      "currentPrice": 1830.75,
-      "changePct": 2.0,
+      "currentPrice": 1824.7,
+      "changePct": 1.0,
       "screenerUrl": "https://www.screener.in/company/544937/consolidated/",
       "issueSizeCr": 34.0
     },
@@ -985,7 +985,7 @@
       "listingDateIso": "2026-09-24",
       "listedToday": true,
       "ipoMarketCapCr": 160.0,
-      "currentPrice": 103.95,
+      "currentPrice": 103.4,
       "changePct": -1.0,
       "screenerUrl": "https://www.screener.in/company/KHERIAAUTO/",
       "issueSizeCr": 46.44
@@ -1014,7 +1014,7 @@
     }
   ],
   "count": 46,
-  "fetchedAt": "2026-09-24T08:53:53.489868",
+  "fetchedAt": "2026-09-24T09:27:08.772519",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
