@@ -413,8 +413,8 @@
       "listingDateIso": "2026-09-24",
       "listedToday": false,
       "ipoMarketCapCr": 441788.0,
-      "currentPrice": 1795.5,
-      "changePct": 1.0,
+      "currentPrice": 1793.2,
+      "changePct": 0.0,
       "screenerUrl": "https://www.screener.in/company/544937/consolidated/",
       "issueSizeCr": 34.0
     },
@@ -919,14 +919,14 @@
       "listingDateIso": "2026-09-25",
       "listedToday": true,
       "ipoMarketCapCr": 191.0,
-      "currentPrice": 54.15,
+      "currentPrice": 54.1,
       "changePct": -1.0,
       "screenerUrl": "https://www.screener.in/company/AXIOMGAS/",
       "issueSizeCr": 50.75
     }
   ],
   "count": 42,
-  "fetchedAt": "2026-09-25T09:45:41.719371",
+  "fetchedAt": "2026-09-25T09:58:08.310457",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
