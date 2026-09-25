@@ -413,7 +413,7 @@
       "listingDateIso": "2026-09-24",
       "listedToday": false,
       "ipoMarketCapCr": 441788.0,
-      "currentPrice": 1800.0,
+      "currentPrice": 1796.8,
       "changePct": 1.0,
       "screenerUrl": "https://www.screener.in/company/544937/consolidated/",
       "issueSizeCr": 34.0
@@ -926,7 +926,7 @@
     }
   ],
   "count": 42,
-  "fetchedAt": "2026-09-25T09:03:12.314178",
+  "fetchedAt": "2026-09-25T09:15:23.792675",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
