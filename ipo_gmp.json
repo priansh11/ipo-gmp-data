@@ -438,7 +438,7 @@
       "currentPrice": null,
       "changePct": null,
       "screenerUrl": null,
-      "issueSizeCr": null
+      "issueSizeCr": 42.0
     },
     {
       "ipoName": "SJP Ultrasonics",
@@ -567,7 +567,7 @@
       "listingDateIso": "2026-09-24",
       "listedToday": false,
       "ipoMarketCapCr": 441788.0,
-      "currentPrice": 1761.25,
+      "currentPrice": 1761.5,
       "changePct": -1.0,
       "screenerUrl": "https://www.screener.in/company/544937/consolidated/",
       "issueSizeCr": 34.0
@@ -992,7 +992,7 @@
     }
   ],
   "count": 45,
-  "fetchedAt": "2026-09-28T10:06:45.708274",
+  "fetchedAt": "2026-09-28T10:21:10.483835",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
