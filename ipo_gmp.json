@@ -325,8 +325,8 @@
       "listingDateIso": "2026-09-29",
       "listedToday": true,
       "ipoMarketCapCr": 3345.0,
-      "currentPrice": 152.4,
-      "changePct": -2.0,
+      "currentPrice": 149.5,
+      "changePct": -4.0,
       "screenerUrl": "https://www.screener.in/company/VARMORA/consolidated/",
       "issueSizeCr": 708.02
     },
@@ -985,14 +985,14 @@
       "listingDateIso": "2026-09-29",
       "listedToday": true,
       "ipoMarketCapCr": 93.0,
-      "currentPrice": 123.9,
-      "changePct": -0.0,
+      "currentPrice": 120.0,
+      "changePct": -3.0,
       "screenerUrl": "https://www.screener.in/company/544943/",
       "issueSizeCr": 26.5
     }
   ],
   "count": 45,
-  "fetchedAt": "2026-09-29T10:04:43.204814",
+  "fetchedAt": "2026-09-29T10:17:42.222292",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
