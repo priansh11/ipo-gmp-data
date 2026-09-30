@@ -281,8 +281,8 @@
       "listingDateIso": "2026-09-30",
       "listedToday": true,
       "ipoMarketCapCr": 6101.0,
-      "currentPrice": 317.7,
-      "changePct": -11.0,
+      "currentPrice": 322.95,
+      "changePct": -9.0,
       "screenerUrl": "https://www.screener.in/company/ELEVATE/consolidated/",
       "issueSizeCr": 2100.0
     },
@@ -303,7 +303,7 @@
       "listingDateIso": "2026-09-30",
       "listedToday": true,
       "ipoMarketCapCr": 1190.0,
-      "currentPrice": 295.1,
+      "currentPrice": 295.35,
       "changePct": -20.0,
       "screenerUrl": "https://www.screener.in/company/ARMEE/consolidated/",
       "issueSizeCr": 300.0
@@ -948,7 +948,7 @@
     }
   ],
   "count": 43,
-  "fetchedAt": "2026-09-30T10:08:16.099036",
+  "fetchedAt": "2026-09-30T10:38:51.292954",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
