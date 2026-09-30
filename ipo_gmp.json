@@ -281,8 +281,8 @@
       "listingDateIso": "2026-09-30",
       "listedToday": true,
       "ipoMarketCapCr": 6101.0,
-      "currentPrice": 322.1,
-      "changePct": -9.0,
+      "currentPrice": 317.7,
+      "changePct": -11.0,
       "screenerUrl": "https://www.screener.in/company/ELEVATE/consolidated/",
       "issueSizeCr": 2100.0
     },
@@ -948,7 +948,7 @@
     }
   ],
   "count": 43,
-  "fetchedAt": "2026-09-30T09:57:32.369514",
+  "fetchedAt": "2026-09-30T10:08:16.099036",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
