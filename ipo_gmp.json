@@ -193,8 +193,8 @@
       "listingDateIso": "2026-10-01",
       "listedToday": true,
       "ipoMarketCapCr": 5985.0,
-      "currentPrice": 53.06,
-      "changePct": -4.0,
+      "currentPrice": 54.03,
+      "changePct": -2.0,
       "screenerUrl": "https://www.screener.in/company/MONEYVIEW/consolidated/",
       "issueSizeCr": 1091.68
     },
@@ -215,8 +215,8 @@
       "listingDateIso": "2026-10-01",
       "listedToday": true,
       "ipoMarketCapCr": 3128.0,
-      "currentPrice": 414.0,
-      "changePct": -9.0,
+      "currentPrice": 417.0,
+      "changePct": -8.0,
       "screenerUrl": "https://www.screener.in/company/AONESTEELS/consolidated/",
       "issueSizeCr": 405.0
     },
@@ -750,7 +750,7 @@
     }
   ],
   "count": 34,
-  "fetchedAt": "2026-10-01T10:23:11.574772",
+  "fetchedAt": "2026-10-01T10:36:40.882653",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
