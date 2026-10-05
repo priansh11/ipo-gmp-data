@@ -4,7 +4,7 @@
       "ipoName": "Jio PlatformUpcoming",
       "normalizedName": "JIOPLATFORMUPCOMING",
       "category": "MAINBOARD",
-      "gmp": 150.0,
+      "gmp": 155.0,
       "trend": "UP",
       "issuePrice": null,
       "expectedPrice": null,
@@ -684,7 +684,7 @@
     }
   ],
   "count": 31,
-  "fetchedAt": "2026-10-05T11:01:21.258693",
+  "fetchedAt": "2026-10-05T11:45:02.296808",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
