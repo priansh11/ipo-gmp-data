@@ -4,7 +4,7 @@
       "ipoName": "Jio PlatformUpcoming",
       "normalizedName": "JIOPLATFORMUPCOMING",
       "category": "MAINBOARD",
-      "gmp": 155.0,
+      "gmp": 160.0,
       "trend": "UP",
       "issuePrice": null,
       "expectedPrice": null,
@@ -127,8 +127,8 @@
       "listingDateIso": "2026-10-05",
       "listedToday": true,
       "ipoMarketCapCr": 1741.0,
-      "currentPrice": 26.1,
-      "changePct": -8.0,
+      "currentPrice": 26.08,
+      "changePct": -19.0,
       "screenerUrl": "https://www.screener.in/company/ACEVECTOR/consolidated/",
       "issueSizeCr": 420.0
     },
@@ -149,8 +149,8 @@
       "listingDateIso": "2026-10-05",
       "listedToday": true,
       "ipoMarketCapCr": 1047.0,
-      "currentPrice": 128.2,
-      "changePct": -11.0,
+      "currentPrice": 128.33,
+      "changePct": -8.0,
       "screenerUrl": "https://www.screener.in/company/GERMAN/consolidated/",
       "issueSizeCr": 304.0
     },
@@ -171,8 +171,8 @@
       "listingDateIso": "2026-10-05",
       "listedToday": true,
       "ipoMarketCapCr": 4508.0,
-      "currentPrice": 298.95,
-      "changePct": -2.0,
+      "currentPrice": 301.45,
+      "changePct": -1.0,
       "screenerUrl": "https://www.screener.in/company/RUNWALENTR/consolidated/",
       "issueSizeCr": 500.0
     },
@@ -590,7 +590,7 @@
       "listedToday": true,
       "ipoMarketCapCr": 30.0,
       "currentPrice": 25.0,
-      "changePct": 0.0,
+      "changePct": -14.0,
       "screenerUrl": "https://www.screener.in/company/544961/",
       "issueSizeCr": 11.0
     },
@@ -656,7 +656,7 @@
       "listedToday": true,
       "ipoMarketCapCr": 228.0,
       "currentPrice": 84.85,
-      "changePct": -0.0,
+      "changePct": -18.0,
       "screenerUrl": "https://www.screener.in/company/HIMALAYAN/",
       "issueSizeCr": 68.03
     },
@@ -684,7 +684,7 @@
     }
   ],
   "count": 31,
-  "fetchedAt": "2026-10-05T11:45:02.296808",
+  "fetchedAt": "2026-10-05T11:58:35.778026",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
