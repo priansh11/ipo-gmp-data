@@ -4,7 +4,7 @@
       "ipoName": "Jio PlatformsUpcoming",
       "normalizedName": "JIOPLATFORMSUPCOMING",
       "category": "MAINBOARD",
-      "gmp": 165.0,
+      "gmp": 155.0,
       "trend": "DOWN",
       "issuePrice": null,
       "expectedPrice": null,
@@ -26,10 +26,10 @@
       "ipoName": "HD Fire ProtectUpcoming",
       "normalizedName": "HDFIREPROTECTUPCOMING",
       "category": "MAINBOARD",
-      "gmp": 90.0,
-      "trend": "UP",
+      "gmp": 55.0,
+      "trend": "DOWN",
       "issuePrice": 271.0,
-      "expectedPrice": 361.0,
+      "expectedPrice": 326.0,
       "expectedGainPct": null,
       "ipoDate": "13-15 Oct",
       "status": "UNKNOWN",
@@ -134,7 +134,7 @@
     }
   ],
   "count": 6,
-  "fetchedAt": "2026-10-08T10:50:34.779278",
+  "fetchedAt": "2026-10-08T11:03:10.393752",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
