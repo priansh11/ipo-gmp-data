@@ -174,7 +174,7 @@
       "currentPrice": null,
       "changePct": null,
       "screenerUrl": null,
-      "issueSizeCr": null
+      "issueSizeCr": 59.97
     },
     {
       "ipoName": "Ravita EngineeringOpen",
@@ -222,7 +222,7 @@
     }
   ],
   "count": 10,
-  "fetchedAt": "2026-10-14T09:39:30.049324",
+  "fetchedAt": "2026-10-14T09:51:59.137279",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
