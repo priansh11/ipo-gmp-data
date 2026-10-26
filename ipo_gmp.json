@@ -42,16 +42,16 @@
       "currentPrice": null,
       "changePct": null,
       "screenerUrl": null,
-      "issueSizeCr": 330.48
+      "issueSizeCr": 275.4
     },
     {
       "ipoName": "SFC Environmental TechnologiesUpcoming",
       "normalizedName": "SFCENVIRONMENTALTECHNOLOGIESUPCOMING",
       "category": "MAINBOARD",
-      "gmp": 30.0,
+      "gmp": 32.0,
       "trend": "UP",
       "issuePrice": 330.0,
-      "expectedPrice": 360.0,
+      "expectedPrice": 362.0,
       "expectedGainPct": null,
       "ipoDate": "27-29 Oct",
       "status": "UNKNOWN",
@@ -70,10 +70,10 @@
       "ipoName": "BLS PolymersUpcoming",
       "normalizedName": "BLSPOLYMERSUPCOMING",
       "category": "MAINBOARD",
-      "gmp": 35.0,
+      "gmp": 38.0,
       "trend": "DOWN",
       "issuePrice": 150.0,
-      "expectedPrice": 185.0,
+      "expectedPrice": 188.0,
       "expectedGainPct": null,
       "ipoDate": "27-29 Oct",
       "status": "UNKNOWN",
@@ -89,13 +89,13 @@
       "issueSizeCr": null
     },
     {
-      "ipoName": "EAAA India AlternativesUpcoming",
-      "normalizedName": "EAAAALTERNATIVESUPCOMING",
+      "ipoName": "EAAA India AlternativesOpen",
+      "normalizedName": "EAAAALTERNATIVESOPEN",
       "category": "MAINBOARD",
-      "gmp": 80.0,
+      "gmp": 50.0,
       "trend": "DOWN",
       "issuePrice": 1665.0,
-      "expectedPrice": 1745.0,
+      "expectedPrice": 1715.0,
       "expectedGainPct": null,
       "ipoDate": "26-28 Oct",
       "status": "UNKNOWN",
@@ -266,7 +266,7 @@
     }
   ],
   "count": 12,
-  "fetchedAt": "2026-10-26T03:12:09.436516",
+  "fetchedAt": "2026-10-26T09:15:20.782227",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
