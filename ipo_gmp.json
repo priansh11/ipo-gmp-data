@@ -210,7 +210,7 @@
       "ipoDate": "30-3 Nov",
       "status": "UNKNOWN",
       "lastUpdated": null,
-      "url": "https://ipowatch.in/maxwell-engineering-solutions-ipo-gmp-today/",
+      "url": "https://ipowatch.in/maxwell-engineering-ipo-gmp-today/",
       "listingDate": null,
       "listingDateIso": null,
       "listedToday": false,
@@ -218,7 +218,7 @@
       "currentPrice": null,
       "changePct": null,
       "screenerUrl": null,
-      "issueSizeCr": 57.64
+      "issueSizeCr": null
     },
     {
       "ipoName": "Vectras EnproconUpcoming",
@@ -354,7 +354,7 @@
     }
   ],
   "count": 16,
-  "fetchedAt": "2026-10-27T09:16:26.555869",
+  "fetchedAt": "2026-10-27T09:28:08.132562",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
