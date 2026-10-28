@@ -127,7 +127,7 @@
       "listingDateIso": "2026-10-28",
       "listedToday": true,
       "ipoMarketCapCr": 1030491.0,
-      "currentPrice": 1417.0,
+      "currentPrice": 1417.35,
       "changePct": 4.0,
       "screenerUrl": "https://www.screener.in/company/JPL/consolidated/",
       "issueSizeCr": null
@@ -149,8 +149,8 @@
       "listingDateIso": "2026-10-28",
       "listedToday": true,
       "ipoMarketCapCr": 7498.0,
-      "currentPrice": 738.5,
-      "changePct": 3.0,
+      "currentPrice": 737.15,
+      "changePct": 2.0,
       "screenerUrl": "https://www.screener.in/company/PARASHLTH/consolidated/",
       "issueSizeCr": 1450.0
     },
@@ -376,7 +376,7 @@
     }
   ],
   "count": 17,
-  "fetchedAt": "2026-10-28T09:56:19.283139",
+  "fetchedAt": "2026-10-28T10:44:04.466253",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
