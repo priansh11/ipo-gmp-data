@@ -204,10 +204,10 @@
       "category": "SME",
       "gmp": 0.0,
       "trend": "FLAT",
-      "issuePrice": 67.0,
-      "expectedPrice": 67.0,
+      "issuePrice": 66.0,
+      "expectedPrice": 66.0,
       "expectedGainPct": null,
-      "ipoDate": "29-2 Nov",
+      "ipoDate": "29-5 Nov",
       "status": "UNKNOWN",
       "lastUpdated": null,
       "url": "https://ipowatch.in/antala-industries-ipo-gmp-today/",
@@ -288,7 +288,7 @@
     }
   ],
   "count": 13,
-  "fetchedAt": "2026-11-03T12:11:07.025490",
+  "fetchedAt": "2026-11-03T12:32:28.186576",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
