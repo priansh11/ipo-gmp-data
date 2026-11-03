@@ -62,7 +62,7 @@
       "listedToday": true,
       "ipoMarketCapCr": 3233.0,
       "currentPrice": 424.85,
-      "changePct": 20.0,
+      "changePct": 23.0,
       "screenerUrl": "https://www.screener.in/company/SFCTECH/consolidated/",
       "issueSizeCr": null
     },
@@ -84,7 +84,7 @@
       "listedToday": true,
       "ipoMarketCapCr": 930.0,
       "currentPrice": 269.3,
-      "changePct": 10.0,
+      "changePct": 30.0,
       "screenerUrl": "https://www.screener.in/company/BLSPOLY/",
       "issueSizeCr": null
     },
@@ -281,14 +281,14 @@
       "listingDateIso": "2026-11-03",
       "listedToday": true,
       "ipoMarketCapCr": 408.0,
-      "currentPrice": 203.0,
-      "changePct": -0.0,
+      "currentPrice": 203.55,
+      "changePct": 0.0,
       "screenerUrl": "https://www.screener.in/company/545010/consolidated/",
       "issueSizeCr": null
     }
   ],
   "count": 13,
-  "fetchedAt": "2026-11-03T11:12:52.179258",
+  "fetchedAt": "2026-11-03T11:29:58.866157",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
