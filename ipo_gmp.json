@@ -40,7 +40,7 @@
       "listedToday": true,
       "ipoMarketCapCr": 912.0,
       "currentPrice": 162.2,
-      "changePct": -5.0,
+      "changePct": 0.0,
       "screenerUrl": "https://www.screener.in/company/MKJEWELS/",
       "issueSizeCr": 275.4
     },
@@ -62,7 +62,7 @@
       "listedToday": false,
       "ipoMarketCapCr": 3233.0,
       "currentPrice": 406.75,
-      "changePct": 23.0,
+      "changePct": 24.0,
       "screenerUrl": "https://www.screener.in/company/SFCTECH/consolidated/",
       "issueSizeCr": null
     },
@@ -238,13 +238,13 @@
       "listedToday": true,
       "ipoMarketCapCr": 105.0,
       "currentPrice": 94.5,
-      "changePct": 5.0,
+      "changePct": 18.0,
       "screenerUrl": "https://www.screener.in/company/545015/consolidated/",
       "issueSizeCr": 28.29
     }
   ],
   "count": 11,
-  "fetchedAt": "2026-11-04T11:23:55.763919",
+  "fetchedAt": "2026-11-04T11:46:01.176637",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
