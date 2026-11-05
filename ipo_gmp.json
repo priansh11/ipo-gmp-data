@@ -17,8 +17,8 @@
       "listingDateIso": "2026-11-05",
       "listedToday": true,
       "ipoMarketCapCr": 515.0,
-      "currentPrice": 94.61,
-      "changePct": 3.0,
+      "currentPrice": 94.81,
+      "changePct": 16.0,
       "screenerUrl": "https://www.screener.in/company/BCSSL/",
       "issueSizeCr": null
     },
@@ -156,7 +156,7 @@
     }
   ],
   "count": 7,
-  "fetchedAt": "2026-11-05T11:21:28.268312",
+  "fetchedAt": "2026-11-05T11:44:23.263388",
   "error": null,
   "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
 }
